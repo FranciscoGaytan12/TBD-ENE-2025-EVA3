@@ -1,0 +1,83 @@
+MySQL Shell 8.0.41
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c --mc root@localhost_3307
+Creating a Classic session to 'root@localhost_3307'
+Please provide the password for 'root@localhost_3307': **********
+MySQL Error 2005 (HY000): Unknown MySQL server host 'localhost_3307' (11001)
+ MySQL  SQL > \c --mc root@localhost:3307
+Creating a Classic session to 'root@localhost:3307'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 13
+Server version: 8.0.41 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3307 ssl  SQL > use tdb_eva3
+MySQL Error 1049: Unknown database 'tdb_eva3'
+ MySQL  localhost:3307 ssl  SQL > select es_par;
+ERROR: 1054 (42S22): Unknown column 'es_par' in 'field list'
+ MySQL  localhost:3307 ssl  SQL > select es_par(4);
+ERROR: 1046 (3D000): No database selected
+ MySQL  localhost:3307 ssl  SQL > use tdb_eva3
+MySQL Error 1049: Unknown database 'tdb_eva3'
+ MySQL  localhost:3307 ssl  SQL > use tbd_eva3
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select es_par(4);
+ERROR: 1054 (42S22): Unknown column 'numero' in 'field list'
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select es_par();
+ERROR: 1318 (42000): Incorrect number of arguments for FUNCTION tbd_eva3.es_par; expected 1, got 0
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select es_par(par);
+ERROR: 1054 (42S22): Unknown column 'par' in 'field list'
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > drop function es_par;
+Query OK, 0 rows affected (0.0163 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select es_par(15) as resultado;
++-----------+
+| resultado |
++-----------+
+| impar     |
++-----------+
+1 row in set (0.0103 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select es_par(4) as resultado;
++-----------+
+| resultado |
++-----------+
+| par       |
++-----------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select comparar_numeros(15,30);
+ERROR: 1305 (42000): FUNCTION tbd_eva3.comparar_numeros does not exist
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select comprar_numero(15,30);
+ERROR: 1265 (01000): Data truncated for column 'comprar_numero(15,30)' at row 1
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select comprar_numero(5 , 5);
+ERROR: 1265 (01000): Data truncated for column 'comprar_numero(5 , 5)' at row 1
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > create table numeros(num1 int, num2 int);
+Query OK, 0 rows affected (0.0658 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > insert into numeros(2,3),(4,5),(10,34),(50,54);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '2,3),(4,5),(10,34),(50,54)' at line 1
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > insert into numeros value (2,3),(4,5),(10,34),(50,54);
+Query OK, 4 rows affected (0.0244 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select * from numeros;
++------+------+
+| num1 | num2 |
++------+------+
+|    2 |    3 |
+|    4 |    5 |
+|   10 |   34 |
+|   50 |   54 |
++------+------+
+4 rows in set (0.0014 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > drop function comprar_numero;
+Query OK, 0 rows affected (0.0175 sec)
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select comparar_numero(40, 23);
+ERROR: 1305 (42000): FUNCTION tbd_eva3.comparar_numero does not exist
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL > select comprar_numero (40, 23);
+ERROR: 1265 (01000): Data truncated for column 'comprar_numero (40, 23)' at row 1
+ MySQL  localhost:3307 ssl  tbd_eva3  SQL >
