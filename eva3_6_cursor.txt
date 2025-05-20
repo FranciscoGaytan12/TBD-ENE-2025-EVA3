@@ -1,0 +1,74 @@
+eva3_6_cursor
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 92
+Server version: 8.0.41 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_eva3;
+Default schema set to `tbd_eva3`.
+Fetching global names, object names from `tbd_eva3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| exa2_tbd           |
+| information_schema |
+| mysql              |
+| northwind          |
+| performance_schema |
+| prueba             |
+| prueba1            |
+| sakila             |
+| segurototal        |
+| sys                |
+| tarjeta            |
+| tarjetas           |
+| tbd_eva3           |
+| tdb_eva1           |
+| tdb_eva2           |
+| world              |
++--------------------+
+16 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > show tables;
++--------------------+
+| Tables_in_tbd_eva3 |
++--------------------+
+| clientes           |
+| numeros            |
++--------------------+
+2 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > desc clientes;
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| Field       | Type              | Null | Key | Default           | Extra                                         |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| customer_id | smallint unsigned | NO   |     | 0                 |                                               |
+| store_id    | tinyint unsigned  | NO   |     | NULL              |                                               |
+| first_name  | varchar(45)       | NO   |     | NULL              |                                               |
+| last_name   | varchar(45)       | NO   |     | NULL              |                                               |
+| email       | varchar(50)       | YES  |     | NULL              |                                               |
+| address_id  | smallint unsigned | NO   |     | NULL              |                                               |
+| active      | tinyint(1)        | NO   |     | 1                 |                                               |
+| create_date | datetime          | NO   |     | NULL              |                                               |
+| last_update | timestamp         | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+9 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > call  contar_cleintes(@cont);
+Query OK, 0 rows affected (0.0258 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|   600 |
++-------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL > create table clientes2(customer_id int, first_name varchar(50),last_name varchar(50));
+Query OK, 0 rows affected (0.0231 sec)
+ MySQL  localhost:3306 ssl  tbd_eva3  SQL >
