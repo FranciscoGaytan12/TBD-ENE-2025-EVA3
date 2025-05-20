@@ -1,0 +1,248 @@
+EVA3_5_PROCEDIMIENTOS
+
+MySQL Shell 8.0.41
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c --mc root@locaLHOST
+Creating a Classic session to 'root@locaLHOST'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 11
+Server version: 8.0.41 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  locaLHOST:3306 ssl  SQL > use sakila
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  locaLHOST:3306 ssl  sakila  SQL > show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.0015 sec)
+ MySQL  locaLHOST:3306 ssl  sakila  SQL > select * from customer limit 50;
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+| customer_id | store_id | first_name | last_name | email                                 | address_id | active | create_date         | last_update         |
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+|           1 |        1 | MARY       | SMITH     | MARY.SMITH@sakilacustomer.org         |          5 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           2 |        1 | PATRICIA   | JOHNSON   | PATRICIA.JOHNSON@sakilacustomer.org   |          6 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           3 |        1 | LINDA      | WILLIAMS  | LINDA.WILLIAMS@sakilacustomer.org     |          7 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           4 |        2 | BARBARA    | JONES     | BARBARA.JONES@sakilacustomer.org      |          8 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           5 |        1 | ELIZABETH  | BROWN     | ELIZABETH.BROWN@sakilacustomer.org    |          9 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           6 |        2 | JENNIFER   | DAVIS     | JENNIFER.DAVIS@sakilacustomer.org     |         10 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           7 |        1 | MARIA      | MILLER    | MARIA.MILLER@sakilacustomer.org       |         11 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           8 |        2 | SUSAN      | WILSON    | SUSAN.WILSON@sakilacustomer.org       |         12 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           9 |        2 | MARGARET   | MOORE     | MARGARET.MOORE@sakilacustomer.org     |         13 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          10 |        1 | DOROTHY    | TAYLOR    | DOROTHY.TAYLOR@sakilacustomer.org     |         14 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          11 |        2 | LISA       | ANDERSON  | LISA.ANDERSON@sakilacustomer.org      |         15 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          12 |        1 | NANCY      | THOMAS    | NANCY.THOMAS@sakilacustomer.org       |         16 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          13 |        2 | KAREN      | JACKSON   | KAREN.JACKSON@sakilacustomer.org      |         17 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          14 |        2 | BETTY      | WHITE     | BETTY.WHITE@sakilacustomer.org        |         18 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          15 |        1 | HELEN      | HARRIS    | HELEN.HARRIS@sakilacustomer.org       |         19 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          16 |        2 | SANDRA     | MARTIN    | SANDRA.MARTIN@sakilacustomer.org      |         20 |      0 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          17 |        1 | DONNA      | THOMPSON  | DONNA.THOMPSON@sakilacustomer.org     |         21 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          18 |        2 | CAROL      | GARCIA    | CAROL.GARCIA@sakilacustomer.org       |         22 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          19 |        1 | RUTH       | MARTINEZ  | RUTH.MARTINEZ@sakilacustomer.org      |         23 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          20 |        2 | SHARON     | ROBINSON  | SHARON.ROBINSON@sakilacustomer.org    |         24 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          21 |        1 | MICHELLE   | CLARK     | MICHELLE.CLARK@sakilacustomer.org     |         25 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          22 |        1 | LAURA      | RODRIGUEZ | LAURA.RODRIGUEZ@sakilacustomer.org    |         26 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          23 |        2 | SARAH      | LEWIS     | SARAH.LEWIS@sakilacustomer.org        |         27 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          24 |        2 | KIMBERLY   | LEE       | KIMBERLY.LEE@sakilacustomer.org       |         28 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          25 |        1 | DEBORAH    | WALKER    | DEBORAH.WALKER@sakilacustomer.org     |         29 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          26 |        2 | JESSICA    | HALL      | JESSICA.HALL@sakilacustomer.org       |         30 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          27 |        2 | SHIRLEY    | ALLEN     | SHIRLEY.ALLEN@sakilacustomer.org      |         31 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          28 |        1 | CYNTHIA    | YOUNG     | CYNTHIA.YOUNG@sakilacustomer.org      |         32 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          29 |        2 | ANGELA     | HERNANDEZ | ANGELA.HERNANDEZ@sakilacustomer.org   |         33 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          30 |        1 | MELISSA    | KING      | MELISSA.KING@sakilacustomer.org       |         34 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          31 |        2 | BRENDA     | WRIGHT    | BRENDA.WRIGHT@sakilacustomer.org      |         35 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          32 |        1 | AMY        | LOPEZ     | AMY.LOPEZ@sakilacustomer.org          |         36 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          33 |        2 | ANNA       | HILL      | ANNA.HILL@sakilacustomer.org          |         37 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          34 |        2 | REBECCA    | SCOTT     | REBECCA.SCOTT@sakilacustomer.org      |         38 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          35 |        2 | VIRGINIA   | GREEN     | VIRGINIA.GREEN@sakilacustomer.org     |         39 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          36 |        2 | KATHLEEN   | ADAMS     | KATHLEEN.ADAMS@sakilacustomer.org     |         40 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          37 |        1 | PAMELA     | BAKER     | PAMELA.BAKER@sakilacustomer.org       |         41 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          38 |        1 | MARTHA     | GONZALEZ  | MARTHA.GONZALEZ@sakilacustomer.org    |         42 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          39 |        1 | DEBRA      | NELSON    | DEBRA.NELSON@sakilacustomer.org       |         43 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          40 |        2 | AMANDA     | CARTER    | AMANDA.CARTER@sakilacustomer.org      |         44 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          41 |        1 | STEPHANIE  | MITCHELL  | STEPHANIE.MITCHELL@sakilacustomer.org |         45 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          42 |        2 | CAROLYN    | PEREZ     | CAROLYN.PEREZ@sakilacustomer.org      |         46 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          43 |        2 | CHRISTINE  | ROBERTS   | CHRISTINE.ROBERTS@sakilacustomer.org  |         47 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          44 |        1 | MARIE      | TURNER    | MARIE.TURNER@sakilacustomer.org       |         48 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          45 |        1 | JANET      | PHILLIPS  | JANET.PHILLIPS@sakilacustomer.org     |         49 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          46 |        2 | CATHERINE  | CAMPBELL  | CATHERINE.CAMPBELL@sakilacustomer.org |         50 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          47 |        1 | FRANCES    | PARKER    | FRANCES.PARKER@sakilacustomer.org     |         51 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          48 |        1 | ANN        | EVANS     | ANN.EVANS@sakilacustomer.org          |         52 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          49 |        2 | JOYCE      | EDWARDS   | JOYCE.EDWARDS@sakilacustomer.org      |         53 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          50 |        1 | DIANE      | COLLINS   | DIANE.COLLINS@sakilacustomer.org      |         54 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+50 rows in set (0.0786 sec)
+ MySQL  locaLHOST:3306 ssl  sakila  SQL > create table customer as select * from sakila.customer;
+ERROR: 1050 (42S01): Table 'customer' already exists
+ MySQL  locaLHOST:3306 ssl  sakila  SQL > call consultar_clientes();
+ERROR: 1305 (42000): PROCEDURE sakila.consultar_clientes does not exist
+ MySQL  locaLHOST:3306 ssl  sakila  SQL > use t3;
+Default schema set to `t3`.
+Fetching global names, object names from `t3` for auto-completion... Press ^C to stop.
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call consultar_clientes();
+ERROR: 1146 (42S02): Table 't3.customer' doesn't exist
+ MySQL  locaLHOST:3306 ssl  t3  SQL >  create table customer as select * from sakila.customer;
+Query OK, 599 rows affected (0.1232 sec)
+
+Records: 599  Duplicates: 0  Warnings: 0
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call consultar_clientes();
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+| customer_id | store_id | first_name | last_name | email                                 | address_id | active | create_date         | last_update         |
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+|           1 |        1 | MARY       | SMITH     | MARY.SMITH@sakilacustomer.org         |          5 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           2 |        1 | PATRICIA   | JOHNSON   | PATRICIA.JOHNSON@sakilacustomer.org   |          6 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           3 |        1 | LINDA      | WILLIAMS  | LINDA.WILLIAMS@sakilacustomer.org     |          7 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           4 |        2 | BARBARA    | JONES     | BARBARA.JONES@sakilacustomer.org      |          8 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           5 |        1 | ELIZABETH  | BROWN     | ELIZABETH.BROWN@sakilacustomer.org    |          9 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           6 |        2 | JENNIFER   | DAVIS     | JENNIFER.DAVIS@sakilacustomer.org     |         10 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           7 |        1 | MARIA      | MILLER    | MARIA.MILLER@sakilacustomer.org       |         11 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           8 |        2 | SUSAN      | WILSON    | SUSAN.WILSON@sakilacustomer.org       |         12 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|           9 |        2 | MARGARET   | MOORE     | MARGARET.MOORE@sakilacustomer.org     |         13 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          10 |        1 | DOROTHY    | TAYLOR    | DOROTHY.TAYLOR@sakilacustomer.org     |         14 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          11 |        2 | LISA       | ANDERSON  | LISA.ANDERSON@sakilacustomer.org      |         15 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          12 |        1 | NANCY      | THOMAS    | NANCY.THOMAS@sakilacustomer.org       |         16 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          13 |        2 | KAREN      | JACKSON   | KAREN.JACKSON@sakilacustomer.org      |         17 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          14 |        2 | BETTY      | WHITE     | BETTY.WHITE@sakilacustomer.org        |         18 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          15 |        1 | HELEN      | HARRIS    | HELEN.HARRIS@sakilacustomer.org       |         19 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          16 |        2 | SANDRA     | MARTIN    | SANDRA.MARTIN@sakilacustomer.org      |         20 |      0 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          17 |        1 | DONNA      | THOMPSON  | DONNA.THOMPSON@sakilacustomer.org     |         21 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          18 |        2 | CAROL      | GARCIA    | CAROL.GARCIA@sakilacustomer.org       |         22 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          19 |        1 | RUTH       | MARTINEZ  | RUTH.MARTINEZ@sakilacustomer.org      |         23 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          20 |        2 | SHARON     | ROBINSON  | SHARON.ROBINSON@sakilacustomer.org    |         24 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          21 |        1 | MICHELLE   | CLARK     | MICHELLE.CLARK@sakilacustomer.org     |         25 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          22 |        1 | LAURA      | RODRIGUEZ | LAURA.RODRIGUEZ@sakilacustomer.org    |         26 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          23 |        2 | SARAH      | LEWIS     | SARAH.LEWIS@sakilacustomer.org        |         27 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          24 |        2 | KIMBERLY   | LEE       | KIMBERLY.LEE@sakilacustomer.org       |         28 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          25 |        1 | DEBORAH    | WALKER    | DEBORAH.WALKER@sakilacustomer.org     |         29 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          26 |        2 | JESSICA    | HALL      | JESSICA.HALL@sakilacustomer.org       |         30 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          27 |        2 | SHIRLEY    | ALLEN     | SHIRLEY.ALLEN@sakilacustomer.org      |         31 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          28 |        1 | CYNTHIA    | YOUNG     | CYNTHIA.YOUNG@sakilacustomer.org      |         32 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          29 |        2 | ANGELA     | HERNANDEZ | ANGELA.HERNANDEZ@sakilacustomer.org   |         33 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          30 |        1 | MELISSA    | KING      | MELISSA.KING@sakilacustomer.org       |         34 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          31 |        2 | BRENDA     | WRIGHT    | BRENDA.WRIGHT@sakilacustomer.org      |         35 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          32 |        1 | AMY        | LOPEZ     | AMY.LOPEZ@sakilacustomer.org          |         36 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          33 |        2 | ANNA       | HILL      | ANNA.HILL@sakilacustomer.org          |         37 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          34 |        2 | REBECCA    | SCOTT     | REBECCA.SCOTT@sakilacustomer.org      |         38 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          35 |        2 | VIRGINIA   | GREEN     | VIRGINIA.GREEN@sakilacustomer.org     |         39 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          36 |        2 | KATHLEEN   | ADAMS     | KATHLEEN.ADAMS@sakilacustomer.org     |         40 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          37 |        1 | PAMELA     | BAKER     | PAMELA.BAKER@sakilacustomer.org       |         41 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          38 |        1 | MARTHA     | GONZALEZ  | MARTHA.GONZALEZ@sakilacustomer.org    |         42 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          39 |        1 | DEBRA      | NELSON    | DEBRA.NELSON@sakilacustomer.org       |         43 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          40 |        2 | AMANDA     | CARTER    | AMANDA.CARTER@sakilacustomer.org      |         44 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          41 |        1 | STEPHANIE  | MITCHELL  | STEPHANIE.MITCHELL@sakilacustomer.org |         45 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          42 |        2 | CAROLYN    | PEREZ     | CAROLYN.PEREZ@sakilacustomer.org      |         46 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          43 |        2 | CHRISTINE  | ROBERTS   | CHRISTINE.ROBERTS@sakilacustomer.org  |         47 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          44 |        1 | MARIE      | TURNER    | MARIE.TURNER@sakilacustomer.org       |         48 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          45 |        1 | JANET      | PHILLIPS  | JANET.PHILLIPS@sakilacustomer.org     |         49 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          46 |        2 | CATHERINE  | CAMPBELL  | CATHERINE.CAMPBELL@sakilacustomer.org |         50 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          47 |        1 | FRANCES    | PARKER    | FRANCES.PARKER@sakilacustomer.org     |         51 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          48 |        1 | ANN        | EVANS     | ANN.EVANS@sakilacustomer.org          |         52 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          49 |        2 | JOYCE      | EDWARDS   | JOYCE.EDWARDS@sakilacustomer.org      |         53 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
+|          50 |        1 | DIANE      | COLLINS   | DIANE.COLLINS@sakilacustomer.org      |         54 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
++-------------+----------+------------+-----------+---------------------------------------+------------+--------+---------------------+---------------------+
+50 rows in set (0.0006 sec)
+
+Query OK, 0 rows affected (0.0006 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call consultar_cliente(20);
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+| customer_id | store_id | first_name | last_name | email                              | address_id | active | create_date         | last_update         |
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+|          20 |        2 | SHARON     | ROBINSON  | SHARON.ROBINSON@sakilacustomer.org |         24 |      1 | 2006-02-14 22:04:36 | 2006-02-15 06:57:20 |
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+1 row in set (0.0018 sec)
+
+Query OK, 0 rows affected (0.0018 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call consultar_cliente(2500);
+Empty set (0.0175 sec)
+
+Query OK, 0 rows affected (0.0175 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call consultar_cliente(500);
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+| customer_id | store_id | first_name | last_name | email                              | address_id | active | create_date         | last_update         |
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+|         500 |        1 | REGINALD   | KINDER    | REGINALD.KINDER@sakilacustomer.org |        505 |      1 | 2006-02-14 22:04:37 | 2006-02-15 06:57:20 |
++-------------+----------+------------+-----------+------------------------------------+------------+--------+---------------------+---------------------+
+1 row in set (0.0012 sec)
+
+Query OK, 0 rows affected (0.0012 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > count(*) from cont_clientes;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count(*) from cont_clientes' at line 1
+ MySQL  locaLHOST:3306 ssl  t3  SQL > select  @cant = 0;
++-----------+
+| @cant = 0 |
++-----------+
+|      NULL |
++-----------+
+1 row in set (0.0004 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL >
+ MySQL  locaLHOST:3306 ssl  t3  SQL > ^C
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call contar_clientes(@cant);
+Query OK, 1 row affected (0.0479 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > select @cant;
++-------+
+| @cant |
++-------+
+|   599 |
++-------+
+1 row in set (0.0004 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call insertar_cliente(600, "Juan", "Pérez Jolote");
+ERROR: 1364 (HY000): Field 'store_id' doesn't have a default value
+ MySQL  locaLHOST:3306 ssl  t3  SQL > drop procedure insertar_cliente;
+Query OK, 0 rows affected (0.0058 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > create table clientes(
+                                   -> id_cliente int,
+                                   -> Nombre varchar(45),
+                                   -> Apellido varchar(45));
+Query OK, 0 rows affected (0.0697 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call insertar_cliente(600, "Juan", "Pérez Jolote");
+ERROR: 1146 (42S02): Table 't3.cliente' doesn't exist
+ MySQL  locaLHOST:3306 ssl  t3  SQL > select * from cliente
+                                   -> ;
+ERROR: 1146 (42S02): Table 't3.cliente' doesn't exist
+ MySQL  locaLHOST:3306 ssl  t3  SQL > select * from clientes ;
+Empty set (0.0014 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call insertar_clientes(600, "Juan", "Pérez Jolote");
+ERROR: 1054 (42S22): Unknown column 'id_cl' in 'field list'
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call insertar_cliente(600, "Juan", "Pérez Jolote");
+ERROR: 1146 (42S02): Table 't3.cliente' doesn't exist
+ MySQL  locaLHOST:3306 ssl  t3  SQL > call insertar_clientee(600, "Juan", "Pérez Jolote");
+Query OK, 1 row affected (0.0060 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL > select * from clientes;
++------------+--------+--------------+
+| id_cliente | Nombre | Apellido     |
++------------+--------+--------------+
+|        600 | Juan   | Pérez Jolote |
++------------+--------+--------------+
+1 row in set (0.0005 sec)
+ MySQL  locaLHOST:3306 ssl  t3  SQL >
